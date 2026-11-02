@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry - Sweet Crumbs Bakery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- KEEP YOUR HEADER AND NAV HERE -->
+    <header>
+        <h1>Sweet Crumbs Bakery</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="products.html">Products</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact</a>
+            <a href="gallery.html">Gallery</a>
+        </nav>
+    </header>
+
+    <!-- REPLACE YOUR MAIN SECTION WITH THIS -->
+    <main>
+        <h2>Enquire About Our Products</h2>
+        <p>Interested in a custom cake or catering? Let us know!</p>
+
+        <!-- The Form -->
+        <form id="enquiryForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="enquiryType">What are you enquiring about?</label>
+                <select id="enquiryType" required>
+                    <option value="">-- Please Select --</option>
+                    <option value="cake">Custom Birthday Cake</option>
+                    <option value="catering">Event Catering</option>
+                </select>
+            </div>
+            
+            <button type="submit">Submit Enquiry</button>
+        </form>
+
+        <!-- Success Message Box (Hidden at first) -->
+        <div id="responseBox" style="display: none; padding: 15px; background-color: #d4edda; color: #155724; border-radius: 5px; margin-top: 20px; border: 1px solid #c3e6cb;">
+        </div>
+    </main>
+
+    <!-- KEEP YOUR FOOTER HERE -->
+    <footer>
+        <p>&copy; 2026 Sweet Crumbs Bakery. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT GOES DIRECTLY HERE -->
+    <script>
+        document.getElementById('enquiryForm').addEventListener('submit', function(event) {
+            // Stop the page from refreshing
+            event.preventDefault(); 
+
+            // Get the user's input
+            let name = document.getElementById('name').value;
+            let type = document.getElementById('enquiryType').value;
+            let responseBox = document.getElementById('responseBox');
+
+            // Validate
+            if (name === "" || type === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Process and Display Response
+            let message = "";
+            if (type === "cake") {
+                message = "Thank you, " + name + "! A custom cake typically takes 3 days notice. We will email you a quote shortly.";
+            } else {
+                message = "Thank you, " + name + "! We have received your catering enquiry and will contact you with availability.";
+            }
+
+            // Show the success box and hide the form
+            responseBox.innerHTML = "<strong>Success!</strong> " + message;
+            responseBox.style.display = "block";
+            document.getElementById('enquiryForm').style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sweet Crumbs Bakery</title>
+    <meta name="description" content="Learn about Sweet Crumbs Bakery, our mission, vision and commitment to providing fresh and delicious baked goods.">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Sweet Crumbs Bakery</h1>
+        <p>Freshly baked with love</p>
+    </header>
+
+    <!-- Website navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="enquiry.html">Order</a>
+    </nav>
+    <main>
+    <h2>Our Products</h2>
+    <p>Search for your favourite treat:</p>
+
+    <!-- The Search Bar -->
+    <input type="text" id="searchInput" placeholder="Search products..." style="padding: 10px; width: 100%; max-width: 400px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;">
+
+    <!-- The Product List -->
+    <div id="productList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+        <div class="product-item" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h3>Chocolate Cake</h3>
+            <p>Rich and moist.</p>
+        </div>
+        <div class="product-item" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h3>Vanilla Cupcakes</h3>
+            <p>Classic and sweet.</p>
+        </div>
+        <div class="product-item" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h3>Sourdough Bread</h3>
+            <p>Freshly baked daily.</p>
+        </div>
+        <div class="product-item" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+            <h3>Chocolate Croissant</h3>
+            <p>Flaky and buttery.</p>
+        </div>
+    </div>
+</main>
+
+<!-- JAVASCRIPT FOR SEARCH GOES HERE -->
+<script>
+    // Get the search input and all product items
+    const searchInput = document.getElementById('searchInput');
+    const productItems = document.querySelectorAll('.product-item');
+
+    // Listen for typing in the search bar
+    searchInput.addEventListener('keyup', function() {
+        // Get the text typed by the user (convert to lowercase for easier matching)
+        const filterValue = searchInput.value.toLowerCase();
+
+        // Loop through every product
+        productItems.forEach(function(item) {
+            // Get the text inside the product (h3 and p tags)
+            const text = item.textContent.toLowerCase();
+
+            // If the product text includes the search text, show it. Otherwise, hide it.
+            if (text.includes(filterValue)) {
+                item.style.display = 'block'; 
+            } else {
+                item.style.display = 'none'; 
+            }
+        });
+    });
+</script>
+       
+    
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Sweet Crumbs Bakery. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
